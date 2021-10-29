@@ -1,0 +1,13 @@
+<html>
+<head>
+  <script>
+  async function start(){
+    document.querySelector('video').srcObject = await navigator.mediaDevices.getUserMedia({video: true});
+  };
+  </script>
+  </head>
+  <body>
+    <video></video>
+    <button onclick='start()'>Start</button>
+  </body>
+</html>
