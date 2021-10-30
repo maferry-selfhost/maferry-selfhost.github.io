@@ -1,0 +1,21 @@
+<html>
+<head>
+  <script>
+  async function start(){
+    vid = document.querySelector('video');
+    vid.srcObject = await navigator.mediaDevices.getUserMedia({video: {
+                                    facingMode: 'user',
+                                    frameRate: {
+                                        ideal: 5,
+                                        max: 10
+                                    }}});
+    vid.play();
+  };
+  </script>
+  </head>
+  <body>
+    Button - Revision 1<br>
+    <video></video>
+    <button onclick='start()'>Start</button>
+  </body>
+</html>
