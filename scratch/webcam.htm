@@ -3,18 +3,13 @@
   <script>
   async function start(){
     vid = document.querySelector('video');
-    vid.srcObject = await navigator.mediaDevices.getUserMedia({video: {
-                                    facingMode: 'user',
-                                    frameRate: {
-                                        ideal: 5,
-                                        max: 10
-                                    }}});
+    vid.srcObject = await navigator.mediaDevices.getUserMedia({video: true});
     vid.play();
   };
   </script>
   </head>
-  <body onload='start()'>
-    R5
+  <body>
+    R6
     <video></video>
     <button onclick='start()'>Start</button>
   </body>
