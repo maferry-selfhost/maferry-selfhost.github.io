@@ -4,14 +4,17 @@
   async function start(){
     vid = document.querySelector('video');
     vid.srcObject = await navigator.mediaDevices.getUserMedia({video: {
-      facingMode: 'user'
+      facingMode: 'user',
+      frameRate: {
+        ideal: 5
+      }
     }});
     vid.play();
   };
   </script>
   </head>
   <body onload='start()'>
-    R9
+    R10
     <video></video>
   </body>
 </html>
