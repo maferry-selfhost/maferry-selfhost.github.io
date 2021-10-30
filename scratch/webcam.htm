@@ -3,13 +3,15 @@
   <script>
   async function start(){
     vid = document.querySelector('video');
-    vid.srcObject = await navigator.mediaDevices.getUserMedia({video: true});
+    vid.srcObject = await navigator.mediaDevices.getUserMedia({video: {
+      facingMode: 'user'
+    }});
     vid.play();
   };
   </script>
   </head>
   <body onload='start()'>
-    R8
+    R9
     <video></video>
   </body>
 </html>
