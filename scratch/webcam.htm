@@ -6,7 +6,8 @@
     vid.srcObject = await navigator.mediaDevices.getUserMedia({video: {
       facingMode: 'user',
       frameRate: {
-        ideal: 5
+        ideal: 5,
+        max: 10
       }
     }});
     vid.play();
@@ -14,7 +15,7 @@
   </script>
   </head>
   <body onload='start()'>
-    R10
+    R12
     <video></video>
   </body>
 </html>
