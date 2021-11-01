@@ -3,12 +3,12 @@
   <script>
     function write_log(msg){
       var log = document.querySelector('.log');
-      log.innerText += msg + '\n';
+      log.innerHTML += msg + '<br>';
     }
 
     async function start(){
     vid = document.querySelector('video');
-    write_log('Start getUserMedia');
+    write_log('R14 Start getUserMedia');
     try {
       vid.srcObject = await navigator.mediaDevices.getUserMedia({video: {
         facingMode: 'user',
@@ -18,7 +18,9 @@
         }
       }});
     } catch(e) {
-     write_log('Error: ' + e); 
+      write_log('Error: ' + e);
+      write_log('Name: ' + e.name);
+      write_log('Message: ' + e.message);
     }
     write_log('Stop getUserMedia');
     vid.play();
@@ -26,7 +28,6 @@
   </script>
   </head>
   <body onload='start()'>
-    R13
     <video></video>
     <span class="log"></span>
   </body>
