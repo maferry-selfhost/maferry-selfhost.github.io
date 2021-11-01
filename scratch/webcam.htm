@@ -1,21 +1,33 @@
 <html>
 <head>
   <script>
-  async function start(){
+    function write_log(msg){
+      var log = document.querySelector('.log');
+      log.innerText += msg + '\n';
+    }
+
+    async function start(){
     vid = document.querySelector('video');
-    vid.srcObject = await navigator.mediaDevices.getUserMedia({video: {
-      facingMode: 'user',
-      frameRate: {
-        ideal: 5,
-        max: 10
-      }
-    }});
+    write_log('Start getUserMedia');
+    try {
+      vid.srcObject = await navigator.mediaDevices.getUserMedia({video: {
+        facingMode: 'user',
+        frameRate: {
+          ideal: 5,
+          max: 10
+        }
+      }});
+    } catch(e) {
+     write_log('Error: ' + e); 
+    }
+    write_log('Stop getUserMedia');
     vid.play();
   };
   </script>
   </head>
   <body onload='start()'>
-    R12
+    R13
     <video></video>
+    <span class="log"></span>
   </body>
 </html>
