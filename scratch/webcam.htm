@@ -8,7 +8,7 @@
 
     async function start(){
     vid = document.querySelector('video');
-    write_log('R14 Start getUserMedia');
+    write_log('R15 Start getUserMedia');
     try {
       vid.srcObject = await navigator.mediaDevices.getUserMedia({video: {
         facingMode: 'user',
@@ -29,6 +29,7 @@
   </head>
   <body onload='start()'>
     <video></video>
+    <br>
     <span class="log"></span>
   </body>
 </html>
