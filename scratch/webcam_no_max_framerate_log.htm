@@ -1,0 +1,44 @@
+<html>
+<head>
+  <script>
+    function write_log(msg){
+      var log = document.querySelector('.log');
+      log.innerHTML += msg + '<br>';
+    }
+
+    async function start(){
+    vid = document.querySelector('video');
+    write_log('Start getUserMedia');
+    write_log('NOT requesting a max framerate');
+    try {
+      vid.srcObject = await navigator.mediaDevices.getUserMedia({video: {
+        facingMode: 'user',
+        frameRate: {
+          ideal: 5
+        }
+      }});
+    } catch(e) {
+      write_log('-= Error =-');
+      for (i in e)
+      {
+        write_log(i + ': ' + e[i]);
+      }
+    }
+    write_log('Stop getUserMedia');
+    vid.play();
+    if (vid.srcObject)
+    {
+      for (track of vid.srcObject.getVideoTracks())
+      {
+        write_log('got a framerate of ' + track.getSettings().frameRate);
+      }
+    }
+  };
+  </script>
+  </head>
+  <body onload='start()'>
+    <video></video>
+    <br>
+    <span class="log"></span>
+  </body>
+</html>
