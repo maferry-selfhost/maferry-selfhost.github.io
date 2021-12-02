@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+window.onload = function(){
+    alert('Starting..');
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function(){alert(xhr.readyState + ' ' + xhr.responseText);};
+    xhr.onerror = function(e){s='Error!\n';for(i in e){s+=i+':'+e[i]+'\n';};alert(s);};
+    xhr.open('GET', window.location.pathname);
+    xhr.send();
+}
+</script>
+<body></body>
+</html>
