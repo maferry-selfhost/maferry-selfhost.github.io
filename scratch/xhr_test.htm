@@ -8,11 +8,12 @@ function write(msg)
 }
 
 window.onload = function(){
-    write('Starting...');
+    var path = window.location.href;
+    write('Starting request to: ' + path);
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function(){write(xhr.readyState + ' ' + xhr.responseText);};
     xhr.onerror = function(e){s='Error!\n';for(i in e){s+=i+':'+e[i]+'\n';};write(s);};
-    xhr.open('GET', window.location.pathname);
+    xhr.open('GET', path);
     xhr.send();
 }
 </script>
