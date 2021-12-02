@@ -2,14 +2,19 @@
 <html>
 <head>
 <script>
+function write(msg)
+{
+  document.querySelector('div').innerText += msg + '\n\n';
+}
+
 window.onload = function(){
-    alert('Starting..');
+    write('Starting...');
     var xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function(){alert(xhr.readyState + ' ' + xhr.responseText);};
-    xhr.onerror = function(e){s='Error!\n';for(i in e){s+=i+':'+e[i]+'\n';};alert(s);};
+    xhr.onreadystatechange = function(){write(xhr.readyState + ' ' + xhr.responseText);};
+    xhr.onerror = function(e){s='Error!\n';for(i in e){s+=i+':'+e[i]+'\n';};write(s);};
     xhr.open('GET', window.location.pathname);
     xhr.send();
 }
 </script>
-<body></body>
+<body><div></div></body>
 </html>
